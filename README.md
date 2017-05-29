@@ -16,7 +16,7 @@ With delabeats, users will be able to:
 
 This app will consist of a single screen with a sound board, sound controls. I will have nav links to the project's GitHub repo and my LinkedIn profile.
 
-The sound board will consist of [#] of different percussion beats. The sound controls will include play, mute, reset and add/remove beat buttons.
+The sound board will consist of [#] of different percussion beats. The sound controls will include play, mute, reset. Each cell on the board will function as an add/remove beat button.
 
 ![wireframe](assets/delabeats.png)
 
