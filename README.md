@@ -1,12 +1,12 @@
-# delaBeats
+# delabeats
 
 ### Background
 
-delaBeats is a sound board app created using JavaScript, jQuery, HTML/CSS, and tone.js. It is based off Conway's Game of Life and using web audio.
+delaBeats is a sound board app created using JavaScript, jQuery, HTML/CSS, and tone.js.
 
 ### Functionality & MVP
 
-With delaBeats, users will be able to:
+With delabeats, users will be able to:
 
 - [ ] Start, pause and reset sound board
 - [ ] Toggle squares to create or remove sound
@@ -29,7 +29,7 @@ This app will be implemented using the following technologies:
 * HTML/CSS for rendering
 * Webpack to bundle scripts
 
-There will be 3 main scripts for the functionality of this project:
+There will be 2 main scripts for the functionality of this project:
 
 `board.js` will handle logic for toggling live/dead states of cells
 
