@@ -2,7 +2,7 @@
 
 ### Background
 
-delaBeats is a sound board app created using JavaScript, jQuery, HTML/CSS, and tone.js.
+delabeats is a sound board app created using JavaScript, jQuery, HTML/CSS, and tone.js.
 
 ### Functionality & MVP
 
