@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>delabeats</title>
+    <link rel="stylesheet" type="text/css" href="./assets/beatbox.scss">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+    <script type="text/javascript" src="./js/bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/e0278f49db.js"></script>
+  </head>
+  <body>
+    <div class="page-container">
+      <h1 class="page-title">de la beats</h1>
+      <div class="beatbox">
+      </div>
+      <section class="beats">
+        <audio id="snare" src="./beats/SnareFuture02.wav" type="audio/wav" autobuffer></audio>
+        <audio id="claps" src="./beats/ClapsFuture07.wav" type="audio/wav" autobuffer></audio>
+        <audio id="tom" src="./beats/MustardFXTom1.wav" type="audio/wav" autobuffer></audio>
+        <audio id="hat" src="./beats/MustardHat07.wav" type="audio/wav" autobuffer></audio>
+        <audio id="kick-1" src="./beats/KickFuture01.wav" type="audio/wav" autobuffer></audio>
+        <!-- <audio id="kick-2" src="./beats/MustardKick02.wav" type="audio/wav" autobuffer></audio> -->
+      </section>
+      <aside class="nav-links">
+        <i id="reset" class="fa fa-repeat" aria-hidden="true"></i>
+        <i id="pause" class="fa fa-pause" aria-hidden="true"></i>
+        <i id="play" class="fa fa-play" aria-hidden="true"></i>
+        <i id="volume" class="fa fa-volume-up" aria-hidden="true"></i>
+        <i id="mute" class="fa fa-bell-slash" aria-hidden="true"></i>
+      </aside>
+    </div>
+  </body>
+</html>

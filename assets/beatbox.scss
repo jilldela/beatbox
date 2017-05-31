@@ -1,0 +1,97 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  background-color: black;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.page-title {
+  font-family: 'Audiowide', cursive;
+  font-size: 52px;
+  margin: 30px;
+  color: white;
+}
+
+.beatbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  background-color: black;
+  height: 60%;
+  margin: 50px!important;
+}
+
+.beat-row {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.beat-row li {
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.beat-row li:hover {
+  cursor: pointer;
+}
+
+li.active {
+  border: 2px solid red;
+}
+
+.fa {
+  color: white;
+  font-size: 36px!important;
+}
+
+.fa:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  width: 955px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+li.on {
+  background-color: red;
+}
+
+i.off {
+  display: none;
+}
