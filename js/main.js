@@ -1,27 +1,8 @@
+import Board from './board';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const CELLS = 16;
 
-  //create row for each beat
-  $(".beats").children().each( (idx, beat) => {
-      const $ul = $( '<ul class="'+ beat.id +' beat-row">');
-      //create cell for each row with mousedown event handler
-      for (var i = 0; i < CELLS; i++) {
-        const $li = $( '<li class="col_'+ i +' '+ beat.id +'">');
-        $li.data(beat, 'sound');
-
-        $li.mousedown(() => {
-          $li.toggleClass("on");
-          if ($li.hasClass("on")) {
-            beat.play();
-          }
-        });
-
-        $ul.append($li);
-    }
-
-    $ul.appendTo(".beatbox");
-  });
+  const sound_board = new Board();
 
   let playing = true;
   let curCol = 0;
