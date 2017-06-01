@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const activeSlider = new Slider();
 
   let playing = true;
+  $("#volume").addClass("off");
 
   $("#pause").click(() => {
     playing = false;
@@ -21,21 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
     activeSlider.reset();
   });
 
+  const $audio = $("audio");
+
   $("#mute").click(() => {
-    const $audio = $("audio");
-    $audio.toggleClass("muted");
-    if ($audio.hasClass("muted")) {
-      $audio.muted = true;
-    } else {
-      $audio.muted = false;
-    }
+    $audio.addClass("muted");
+    $("#volume").removeClass("off");
+    $("#mute").addClass("off");
   });
 
-    setInterval(() => {
+  $("#volume").click(() => {
+    $audio.removeClass("muted");
+    $("#volume").addClass("off");
+    $("#mute").removeClass("off");
+  });
+
+    const play = setInterval(() => {
       if ( playing === true ) {
         activeSlider.play();
         $("#play").addClass("off");
-        $("#volume").addClass("off");
         $("#pause").removeClass("off");
       } else if ( playing === false ) {
         clearInterval();
