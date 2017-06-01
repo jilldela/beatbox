@@ -3,7 +3,7 @@ class Slider {
     this.curCol = 0;
   }
 
-  play() {
+  init() {
     let slider = $("li.col_" + this.curCol);
       slider.addClass("active");
       slider.each((idx, beat) => {

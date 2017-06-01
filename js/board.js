@@ -1,9 +1,9 @@
 class Board {
   constructor() {
-    this.createRow();
+    this.createGrid();
   }
 
-  createRow() {
+  createGrid() {
     const CELLS = 16;
     //create row for each beat
     $(".beats").children().each( (idx, beat) => {

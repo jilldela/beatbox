@@ -7,22 +7,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const soundBoard = new Board();
   const activeSlider = new Slider();
 
-  let playing = true;
+  const $audio = $("audio");
   $("#volume").addClass("off");
+  $("#play").addClass("off");
+
+  let playing = true;
 
   $("#pause").click(() => {
     playing = false;
+    $("#pause").addClass("off");
+    $("#play").removeClass("off");
   });
 
   $("#play").click(() => {
     playing = true;
+    $("#play").addClass("off");
+    $("#pause").removeClass("off");
   });
 
   $("#reset").click(() => {
     activeSlider.reset();
   });
-
-  const $audio = $("audio");
 
   $("#mute").click(() => {
     $audio.addClass("muted");
@@ -38,13 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const play = setInterval(() => {
       if ( playing === true ) {
-        activeSlider.play();
-        $("#play").addClass("off");
-        $("#pause").removeClass("off");
+        activeSlider.init();
       } else if ( playing === false ) {
         clearInterval();
-        $("#play").removeClass("off");
-        $("#pause").addClass("off");
       }
     }, 300);
 
