@@ -8,37 +8,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const activeSlider = new Slider();
 
   const $audio = $("audio");
-  $("#volume").addClass("off");
-  $("#play").addClass("off");
+  const $volume = $("#volume");
+  const $mute = $("#mute");
+  const $play = $("#play");
+  const $pause = $("#pause");
+
+  $volume.addClass("off");
+  $play.addClass("off");
 
   let playing = true;
 
-  $("#pause").click(() => {
+  $pause.click(() => {
     playing = false;
-    $("#pause").addClass("off");
-    $("#play").removeClass("off");
+    $pause.addClass("off");
+    $play.removeClass("off");
   });
 
-  $("#play").click(() => {
+  $play.click(() => {
     playing = true;
-    $("#play").addClass("off");
-    $("#pause").removeClass("off");
+    $play.addClass("off");
+    $pause.removeClass("off");
   });
 
   $("#reset").click(() => {
     activeSlider.reset();
   });
 
-  $("#mute").click(() => {
+  $mute.click(() => {
     $audio.addClass("muted");
-    $("#volume").removeClass("off");
-    $("#mute").addClass("off");
+    $volume.removeClass("off");
+    $mute.addClass("off");
   });
 
-  $("#volume").click(() => {
+  $volume.click(() => {
     $audio.removeClass("muted");
-    $("#volume").addClass("off");
-    $("#mute").removeClass("off");
+    $volume.addClass("off");
+    $mute.removeClass("off");
   });
 
     const play = setInterval(() => {
@@ -48,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval();
       }
     }, 300);
-
 
 });
 

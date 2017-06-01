@@ -4,10 +4,10 @@ class Slider {
   }
 
   init() {
-    let slider = $("li.col_" + this.curCol);
+    let slider = $(`li.col_${this.curCol}`);
       slider.addClass("active");
       slider.each((idx, beat) => {
-        const audio = $('#'+jQuery.data(beat).id)[0];
+        const audio = $(`#${jQuery.data(beat).id}`)[0];
         if (jQuery(beat).hasClass("on") && $("audio").hasClass("muted") === false) {
           audio.play();
         }
