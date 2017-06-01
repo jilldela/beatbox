@@ -1,57 +1,48 @@
 import Board from './board';
+import Sound from './sound';
+import Slider from './slider';
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const sound_board = new Board();
+  const soundBoard = new Board();
+  const activeSlider = new Slider();
 
   let playing = true;
-  let curCol = 0;
-  let curTempo = 140;
-
-  const Stop = () => {
-    playing = false;
-  };
-
-  const Pause = () => {
-
-  };
-
-  const Reset = () => {
-    curCol = 0;
-  };
-
-  const Play = () => {
-    let slider = $("li.col_" + curCol);
-    slider.addClass("active");
-    slider.each((idx, beat) => {
-      const audio = $('#'+jQuery.data(beat).id)[0];
-      if (jQuery(beat).hasClass("on")) {
-        audio.play();
-      }
-    });
-    curCol++;
-
-    setTimeout(() => {
-      slider.removeClass("active");
-    }, 300);
-
-    if (curCol > 15) {
-      curCol = 0;
-    }
-  };
 
   $("#pause").click(() => {
-    console.log('hi');
     playing = false;
   });
 
-  if ( playing === true ) {
-    setInterval(Play, 300);
-    $("#play").addClass("off");
-    $("#volume").addClass("off");
-  } else if ( playing === false ) {
-    setInterval();
-  }
+  $("#play").click(() => {
+    playing = true;
+  });
+
+  $("#reset").click(() => {
+    activeSlider.reset();
+  });
+
+  $("#mute").click(() => {
+    const $audio = $("audio");
+    $audio.toggleClass("muted");
+    if ($audio.hasClass("muted")) {
+      $audio.muted = true;
+    } else {
+      $audio.muted = false;
+    }
+  });
+
+    setInterval(() => {
+      if ( playing === true ) {
+        activeSlider.play();
+        $("#play").addClass("off");
+        $("#volume").addClass("off");
+        $("#pause").removeClass("off");
+      } else if ( playing === false ) {
+        clearInterval();
+        $("#play").removeClass("off");
+        $("#pause").addClass("off");
+      }
+    }, 300);
 
 
 });

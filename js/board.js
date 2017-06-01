@@ -1,7 +1,10 @@
 class Board {
   constructor() {
-    const CELLS = 16;
+    this.createRow();
+  }
 
+  createRow() {
+    const CELLS = 16;
     //create row for each beat
     $(".beats").children().each( (idx, beat) => {
         const $ul = $( '<ul class="'+ beat.id +' beat-row">');
@@ -12,7 +15,7 @@ class Board {
 
           $li.mousedown(() => {
             $li.toggleClass("on");
-            if ($li.hasClass("on")) {
+            if ($li.hasClass("on") && $("audio").hasClass("muted") === false) {
               beat.play();
             }
           });
@@ -23,6 +26,6 @@ class Board {
       $ul.appendTo(".beatbox");
     });
   }
-}
+ }
 
 export default Board;
