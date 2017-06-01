@@ -41,15 +41,18 @@ time, mark, audio, video {
   justify-content: center;
   align-items: center;
   border: 1px solid black;
-  background-color: black;
+  /*background-color: black;*/
   height: 60%;
   margin: 50px!important;
 }
 
-.beat-row {
+.beatbox ul {
   display: flex;
   justify-content: center;
   list-style-type: none;
+}
+
+.beat-row {
 }
 
 .beat-row li {
@@ -69,6 +72,7 @@ li.active {
   height: 46px;
   width: 46px;
   border: 2px solid red;
+  border-radius: 5px;
 }
 
 .fa {

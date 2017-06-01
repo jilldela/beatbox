@@ -1,3 +1,11 @@
+const BEATS = [
+  '../beats/KickFuture01.wav',
+  '../beats/SnareFuture02.wav',
+  '../beats/ClapsFuture07.wav',
+  '../beats/MustardFXTom1.wav',
+  '../beatsMustardHat07.wav'
+];
+
 class Board {
   constructor() {
     this.createGrid();
@@ -21,7 +29,7 @@ class Board {
               beat.play();
             }
           });
-          
+
           $ul.append($li);
         }
 
