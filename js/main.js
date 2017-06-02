@@ -1,6 +1,7 @@
 import Board from './board';
 import Sound from './sound';
 import Slider from './slider';
+import anime from 'animejs';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let tempo = $("input").val();
 
   $tempo.change((e) => {
-    tempo = 1100 - e.currentTarget.value;
+    tempo = 1150 - e.currentTarget.value;
   });
 
   $pause.click(() => {
@@ -65,7 +66,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }, tempo);
     };
 
-    play();
+    var cssSelector = anime({
+      targets: '#cssSelector .el',
+      rotate: 360,
+      translateX: -300,
+      delay: 1000,
+      easing: 'easeInOutQuart'
+    });
+
+  const buzz = new Audio('./beats/MustardVoxOnTheBeat.wav');
+  buzz.play();
+
+  play();
 
 });
 
