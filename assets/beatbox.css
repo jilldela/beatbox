@@ -64,7 +64,7 @@ time, mark, audio, video {
   width: 50px;
   margin: 5px;
   box-sizing: border-box;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 5px;
   background-color: white;
   transition: 0.5s;
@@ -79,7 +79,7 @@ li.active {
   width: 50px;
   box-sizing: border-box;
   box-shadow: inset 0px 0px 30px red;
-  border: 2px solid red;
+  border: 1px solid red;
   border-radius: 5px;
   transition: 0.5s;
 }

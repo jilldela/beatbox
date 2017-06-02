@@ -322,10 +322,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var playing = true;
   var tempo = $("input").val();
 
-  console.log(tempo);
-
   $tempo.change(function (e) {
-    console.log(e.currentTarget.value);
     tempo = 1100 - e.currentTarget.value;
   });
 

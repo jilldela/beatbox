@@ -20,10 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let playing = true;
   let tempo = $("input").val();
 
-  console.log(tempo);
-
   $tempo.change((e) => {
-    console.log(e.currentTarget.value);
     tempo = 1100 - e.currentTarget.value;
   });
 
