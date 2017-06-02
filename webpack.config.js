@@ -1,9 +1,9 @@
 var path = require('path');
 
 module.exports = {
-  entry: './js/main.js',
+  entry: './lib/js/main.js',
   output: {
-    filename: './js/bundle.js'
+    filename: './lib/js/bundle.js'
   },
   module: {
     loaders: [

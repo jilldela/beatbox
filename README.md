@@ -1,54 +1,59 @@
-# delabeats
+# beatbox
 
-### Background
+## Background
 
-delabeats is a sound board app created using JavaScript, jQuery, HTML/CSS, and tone.js.
+beatbox is a soundboard/beat-making app created using JavaScript, jQuery, HTML/CSS, and anime.js.
 
-### Functionality & MVP
+## Implementation
 
-With delabeats, users will be able to:
+beatbox uses JavaScript and jQuery to create a soundboard that loops through playing different beats.
 
-- [ ] Start, pause and reset sound board
-- [ ] Toggle squares to create or remove sound
-- [ ] Option to play or mute beats
+``` javascript
+//create row for each beat
+$(".beats").children().each( (idx, beat) => {
+    const $ul = $( `<ul class="${beat.id} beat-row">`);
+    //create cell for each row with mousedown event handler
+    $(`<li class="${beat}-button">`);
 
-### Wireframes
+    for (let i = 0; i < CELLS; i++) {
+      const $li = $( `<li class="col_${i} ${beat.id}">`);
+      $li.data(beat, 'sound');
 
-This app will consist of a single screen with a sound board, sound controls. I will have nav links to the project's GitHub repo and my LinkedIn profile.
+      $li.mousedown(() => {
+        $li.toggleClass("on");
+        if ($li.hasClass("on") && $("audio").hasClass("muted") === false) {
+          beat.play();
+        }
+      });
 
-The sound board will consist of [#] of different percussion beats. Each cell on the board will function as an add/remove beat button. The sound controls will include play, mute, reset.
+      $ul.append($li);
+    }
 
-![wireframe](assets/delabeats.png)
+  $ul.appendTo(".beatbox");
+});
+```
 
-### Architecture and Technologies
+The slider sets the tempo with `setTimeout` based on the selected tempo.
 
-This app will be implemented using the following technologies:
+``` javascript
+const play = () => {
+  playLoop = setTimeout(() => {
+      activeSlider.init(tempo);
+      if (playing) {
+        play();
+      }
+    }, tempo);
+};
+```
 
-* Vanilla JavaScript and jQuery for overall structure
-* Tone.js for interactive web audio
-* HTML/CSS for rendering
-* Webpack to bundle scripts
+## Demo
 
-There will be 2 main scripts for the functionality of this project:
+Each cell has the ability to toggle play on or off. When toggled on, the beat will play at tempo as the slider loops through the board. User can increase and decrease tempo, pause, mute and reset the board.
+![](assets/fulldemo.gif)
 
-`board.js` will handle logic for toggling live/dead states of cells
+## Future Features
 
-`beats.js` will handle logic for beats
+When I get a chance, I plan to implement the following features:
 
-## Implementation Timeline
-
-### Day 1: Project Setup
-Setup all necessary Node modules. Create webpack.config.js and package.json. Learn basic Tone.js to play beats.
-
-### Day 2: Learn Tone.js
-Learn how to use Tone.js to create sounds. Build out cell objects to fill the board object. Build logic to toggle live/dead states on click of cell.
-
-### Day 3: Create logic to play beats.
-Have a functional board and controls to start/play, mute, and stop beats.
-
-### Day 4: User Interface.
-Install controls for user interaction. Style sound board and controls.
-
-### Bonus Features
-
+* Switch beats/sounds
 * Record tracks

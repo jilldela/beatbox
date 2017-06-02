@@ -19,7 +19,15 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
+  /*width: 100vh;
+  height: 100vh;*/
+  /*background: radial-gradient(circle at bottom right, red 5%, black 55%);*/
+  /*background: linear-gradient(135deg, black, black 80%, red);*/
   background-color: black;
 }
 
@@ -28,8 +36,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
-  background-color: black;
+  height: 100vh;
+  background: inherit;
+  /*background-color: black;*/
 }
 
 h1.page-title {
@@ -47,7 +56,7 @@ h1.page-title {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   /*background-color: black;*/
   height: 60%;
   margin: 25px!important;
@@ -70,7 +79,7 @@ h1.page-title {
   width: 50px;
   margin: 5px;
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 5px;
   background-color: white;
   transition: 0.2s;
@@ -91,29 +100,32 @@ li.active {
 }
 
 .fa {
-  color: white;
+  color: red;
   font-size: 36px!important;
   transition: 0.5s;
 }
 
 .fa:hover {
   cursor: pointer;
-  color: red;
   transition: 0.5s;
-  text-shadow: 1px 1px 2px black, 0 0 5px red, 0 0 35px darkred;
+  text-shadow: 1px 1px 2px black, 0 0 5px white, 0 0 35px white;
 }
 
 .controller {
   display: flex;
   justify-content: space-between;
-  width: 955px;
+  width: 935px;
   border: 2px solid white;
   border-radius: 5px;
   padding: 15px;
+  background-color: black;
+  /*background-color: black;
+  opacity: 0.5;*/
 }
 
 li.on {
   background-color: red;
+  border: 1px solid red;
 }
 
 i.off {
@@ -135,10 +147,16 @@ i.off {
   position: absolute;
   bottom: 0;
   right: 0;
+  background: transparent;
 }
 
-.github-icon, #linkedin-icon {
+#github-icon, #linkedin-icon {
+  color: red;
   margin: 10px 15px;
+}
+
+#github-icon:hover, #linkedin-icon:hover {
+  font-size: 40px;
 }
 
 #tempo {
