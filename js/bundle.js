@@ -148,17 +148,23 @@ var Slider = function () {
     _classCallCheck(this, Slider);
 
     this.curCol = 0;
+    this.stopPlay = this.stopPlay.bind(this);
   }
 
   _createClass(Slider, [{
     key: "init",
     value: function init(tempo) {
+      var _this = this;
+
       var slider = $("li.col_" + this.curCol);
       slider.addClass("active");
       slider.each(function (idx, beat) {
         var audio = $("#" + jQuery.data(beat).id)[0];
         if (jQuery(beat).hasClass("on") && $("audio").hasClass("muted") === false) {
-          audio.play();
+          _this.stopPlay();
+          audio.play().catch(function (e) {
+            console.log(e);
+          });
         }
       });
       this.curCol++;
@@ -170,6 +176,15 @@ var Slider = function () {
       if (this.curCol > 15) {
         this.curCol = 0;
       }
+    }
+  }, {
+    key: "stopPlay",
+    value: function stopPlay() {
+      var $audio = $("audio");
+      $audio.each(function (idx, audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      });
     }
   }, {
     key: "reset",
@@ -306,11 +321,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var playing = true;
   var tempo = $("input").val();
-  console.log(tempo);
 
   $tempo.change(function (e) {
-    console.log(e.currentTarget.value);
-    tempo = 1300 - e.currentTarget.value;
+    tempo = 1100 - e.currentTarget.value;
   });
 
   $pause.click(function () {
@@ -357,6 +370,11 @@ document.addEventListener("DOMContentLoaded", function () {
   play();
 });
 
+// TODO:
+//.DS_Store
+// Production README
+
+// TODO: BONUS MVPs
 // swap sounds
 // save track
 

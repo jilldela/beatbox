@@ -19,13 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let playing = true;
   let tempo = $("input").val();
-  console.log(tempo);
 
   $tempo.change((e) => {
-    console.log(e.currentTarget.value);
-    tempo = 1300 - e.currentTarget.value;
+    tempo = 1100 - e.currentTarget.value;
   });
-
 
   $pause.click(() => {
     clearInterval(playLoop);
@@ -72,5 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// TODO:
+//.DS_Store
+// Production README
+
+// TODO: BONUS MVPs
 // swap sounds
 // save track

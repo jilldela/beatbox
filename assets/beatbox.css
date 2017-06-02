@@ -31,6 +31,7 @@ time, mark, audio, video {
 .page-title {
   font-family: 'Audiowide', cursive;
   font-size: 52px;
+  text-shadow: 1px 1px 2px black, 0 0 45px red, 0 0 35px darkred;
   margin: 30px;
   color: white;
 }
@@ -62,7 +63,8 @@ time, mark, audio, video {
   height: 50px;
   width: 50px;
   margin: 5px;
-  border: 1px solid black;
+  box-sizing: border-box;
+  border: 2px solid black;
   border-radius: 5px;
   background-color: white;
   transition: 0.5s;
@@ -73,8 +75,10 @@ time, mark, audio, video {
 }
 
 li.active {
-  height: 46px;
-  width: 46px;
+  height: 50px;
+  width: 50px;
+  box-sizing: border-box;
+  box-shadow: inset 0px 0px 20px red;
   border: 2px solid red;
   border-radius: 5px;
   transition: 0.5s;
@@ -117,6 +121,7 @@ i.off {
   margin: 25px;
   font-size: 24px;
   color: white;
+  text-shadow: 1px 1px 2px black, 0 0 45px red, 0 0 25px darkred;
 }
 
 .contact-links {
