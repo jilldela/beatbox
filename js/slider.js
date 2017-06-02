@@ -3,7 +3,7 @@ class Slider {
     this.curCol = 0;
   }
 
-  init() {
+  init(tempo) {
     let slider = $(`li.col_${this.curCol}`);
       slider.addClass("active");
       slider.each((idx, beat) => {
@@ -14,7 +14,7 @@ class Slider {
       });
     this.curCol++;
 
-      setTimeout(() => slider.removeClass("active"), 300);
+      setTimeout(() => slider.removeClass("active"), tempo);
 
       if (this.curCol > 15) {
         this.curCol = 0;

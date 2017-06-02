@@ -152,7 +152,7 @@ var Slider = function () {
 
   _createClass(Slider, [{
     key: "init",
-    value: function init() {
+    value: function init(tempo) {
       var slider = $("li.col_" + this.curCol);
       slider.addClass("active");
       slider.each(function (idx, beat) {
@@ -165,7 +165,7 @@ var Slider = function () {
 
       setTimeout(function () {
         return slider.removeClass("active");
-      }, 300);
+      }, tempo);
 
       if (this.curCol > 15) {
         this.curCol = 0;
@@ -299,17 +299,29 @@ document.addEventListener("DOMContentLoaded", function () {
   var $mute = $("#mute");
   var $play = $("#play");
   var $pause = $("#pause");
+  var $tempo = $("#tempo");
 
   $volume.addClass("off");
   $play.addClass("off");
 
+  var playing = true;
+  var tempo = $("input").val();
+  console.log(tempo);
+
+  $tempo.change(function (e) {
+    console.log(e.currentTarget.value);
+    tempo = 1300 - e.currentTarget.value;
+  });
+
   $pause.click(function () {
     clearInterval(playLoop);
+    playing = false;
     $pause.addClass("off");
     $play.removeClass("off");
   });
 
   $play.click(function () {
+    playing = true;
     play();
     $play.addClass("off");
     $pause.removeClass("off");
@@ -334,9 +346,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var playLoop = void 0;
 
   var play = function play() {
-    playLoop = setInterval(function () {
-      activeSlider.init();
-    }, 300);
+    playLoop = setTimeout(function () {
+      activeSlider.init(tempo);
+      if (playing) {
+        play();
+      }
+    }, tempo);
   };
 
   play();
@@ -350,10 +365,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // }
 });
 
-// adjust tempo
 // swap sounds
 // save track
-// use web api
 
 /***/ })
 /******/ ]);

@@ -12,17 +12,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const $mute = $("#mute");
   const $play = $("#play");
   const $pause = $("#pause");
+  const $tempo = $("#tempo");
 
   $volume.addClass("off");
   $play.addClass("off");
 
+  let playing = true;
+  let tempo = $("input").val();
+  console.log(tempo);
+
+  $tempo.change((e) => {
+    console.log(e.currentTarget.value);
+    tempo = 1300 - e.currentTarget.value;
+  });
+
+
   $pause.click(() => {
     clearInterval(playLoop);
+    playing = false;
     $pause.addClass("off");
     $play.removeClass("off");
   });
 
   $play.click(() => {
+    playing = true;
     play();
     $play.addClass("off");
     $pause.removeClass("off");
@@ -47,9 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let playLoop;
 
     const play = () => {
-      playLoop = setInterval(() => {
-          activeSlider.init();
-        }, 300);
+      playLoop = setTimeout(() => {
+          activeSlider.init(tempo);
+          if (playing) {
+            play();
+          }
+        }, tempo);
     };
 
     play();
@@ -64,7 +80,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// adjust tempo
 // swap sounds
 // save track
-// use web api
