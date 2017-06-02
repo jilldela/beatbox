@@ -16,16 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
   $volume.addClass("off");
   $play.addClass("off");
 
-  let playing = true;
-
   $pause.click(() => {
-    playing = false;
+    clearInterval(playLoop);
     $pause.addClass("off");
     $play.removeClass("off");
   });
 
   $play.click(() => {
-    playing = true;
+    play();
     $play.addClass("off");
     $pause.removeClass("off");
   });
@@ -46,13 +44,23 @@ document.addEventListener("DOMContentLoaded", () => {
     $mute.removeClass("off");
   });
 
-    const play = setInterval(() => {
-      if ( playing === true ) {
-        activeSlider.init();
-      } else if ( playing === false ) {
-        clearInterval();
-      }
-    }, 300);
+  let playLoop;
+
+    const play = () => {
+      playLoop = setInterval(() => {
+          activeSlider.init();
+        }, 300);
+    };
+
+    play();
+
+    // if (playing===true) {
+    //   let play = setInterval(() => {
+    //     activeSlider.init();
+    //   }, 300);
+    // } else if (playing===false) {
+    //   clearInterval(play);
+    // }
 
 });
 

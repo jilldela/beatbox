@@ -63,86 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _board = __webpack_require__(2);
-
-var _board2 = _interopRequireDefault(_board);
-
-var _sound = __webpack_require__(3);
-
-var _sound2 = _interopRequireDefault(_sound);
-
-var _slider = __webpack_require__(4);
-
-var _slider2 = _interopRequireDefault(_slider);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  var soundBoard = new _board2.default();
-  var activeSlider = new _slider2.default();
-
-  var $audio = $("audio");
-  $("#volume").addClass("off");
-  $("#play").addClass("off");
-
-  var playing = true;
-
-  $("#pause").click(function () {
-    playing = false;
-    $("#pause").addClass("off");
-    $("#play").removeClass("off");
-  });
-
-  $("#play").click(function () {
-    playing = true;
-    $("#play").addClass("off");
-    $("#pause").removeClass("off");
-  });
-
-  $("#reset").click(function () {
-    activeSlider.reset();
-  });
-
-  $("#mute").click(function () {
-    $audio.addClass("muted");
-    $("#volume").removeClass("off");
-    $("#mute").addClass("off");
-  });
-
-  $("#volume").click(function () {
-    $audio.removeClass("muted");
-    $("#volume").addClass("off");
-    $("#mute").removeClass("off");
-  });
-
-  var play = setInterval(function () {
-    if (playing === true) {
-      activeSlider.init();
-    } else if (playing === false) {
-      clearInterval();
-    }
-  }, 300);
-});
-
-// adjust tempo
-// swap sounds
-// save track
-// use web api
-
-/***/ }),
-/* 2 */
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -155,6 +80,8 @@ Object.defineProperty(exports, "__esModule", {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var BEATS = ['../beats/KickFuture01.wav', '../beats/SnareFuture02.wav', '../beats/ClapsFuture07.wav', '../beats/MustardFXTom1.wav', '../beatsMustardHat07.wav'];
 
 var Board = function () {
   function Board() {
@@ -171,6 +98,7 @@ var Board = function () {
       $(".beats").children().each(function (idx, beat) {
         var $ul = $('<ul class="' + beat.id + ' beat-row">');
         //create cell for each row with mousedown event handler
+        $('<li class="' + beat + '-button">');
 
         var _loop = function _loop(i) {
           var $li = $('<li class="col_' + i + ' ' + beat.id + '">');
@@ -201,7 +129,66 @@ var Board = function () {
 exports.default = Board;
 
 /***/ }),
-/* 3 */
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Slider = function () {
+  function Slider() {
+    _classCallCheck(this, Slider);
+
+    this.curCol = 0;
+  }
+
+  _createClass(Slider, [{
+    key: "init",
+    value: function init() {
+      var slider = $("li.col_" + this.curCol);
+      slider.addClass("active");
+      slider.each(function (idx, beat) {
+        var audio = $("#" + jQuery.data(beat).id)[0];
+        if (jQuery(beat).hasClass("on") && $("audio").hasClass("muted") === false) {
+          audio.play();
+        }
+      });
+      this.curCol++;
+
+      setTimeout(function () {
+        return slider.removeClass("active");
+      }, 300);
+
+      if (this.curCol > 15) {
+        this.curCol = 0;
+      }
+    }
+  }, {
+    key: "reset",
+    value: function reset() {
+      this.curCol = 0;
+      var $li = $("li");
+      if ($li.hasClass("on")) {
+        $li.removeClass("on");
+      }
+    }
+  }]);
+
+  return Slider;
+}();
+
+exports.default = Slider;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -282,63 +269,91 @@ var Sound = function () {
 exports.default = Sound;
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+var _board = __webpack_require__(0);
+
+var _board2 = _interopRequireDefault(_board);
+
+var _sound = __webpack_require__(2);
+
+var _sound2 = _interopRequireDefault(_sound);
+
+var _slider = __webpack_require__(1);
+
+var _slider2 = _interopRequireDefault(_slider);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  var soundBoard = new _board2.default();
+  var activeSlider = new _slider2.default();
+
+  var $audio = $("audio");
+  var $volume = $("#volume");
+  var $mute = $("#mute");
+  var $play = $("#play");
+  var $pause = $("#pause");
+
+  $volume.addClass("off");
+  $play.addClass("off");
+
+  $pause.click(function () {
+    clearInterval(playLoop);
+    $pause.addClass("off");
+    $play.removeClass("off");
+  });
+
+  $play.click(function () {
+    play();
+    $play.addClass("off");
+    $pause.removeClass("off");
+  });
+
+  $("#reset").click(function () {
+    activeSlider.reset();
+  });
+
+  $mute.click(function () {
+    $audio.addClass("muted");
+    $volume.removeClass("off");
+    $mute.addClass("off");
+  });
+
+  $volume.click(function () {
+    $audio.removeClass("muted");
+    $volume.addClass("off");
+    $mute.removeClass("off");
+  });
+
+  var playLoop = void 0;
+
+  var play = function play() {
+    playLoop = setInterval(function () {
+      activeSlider.init();
+    }, 300);
+  };
+
+  play();
+
+  // if (playing===true) {
+  //   let play = setInterval(() => {
+  //     activeSlider.init();
+  //   }, 300);
+  // } else if (playing===false) {
+  //   clearInterval(play);
+  // }
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Slider = function () {
-  function Slider() {
-    _classCallCheck(this, Slider);
-
-    this.curCol = 0;
-  }
-
-  _createClass(Slider, [{
-    key: "init",
-    value: function init() {
-      var slider = $("li.col_" + this.curCol);
-      slider.addClass("active");
-      slider.each(function (idx, beat) {
-        var audio = $('#' + jQuery.data(beat).id)[0];
-        if (jQuery(beat).hasClass("on") && $("audio").hasClass("muted") === false) {
-          audio.play();
-        }
-      });
-      this.curCol++;
-
-      setTimeout(function () {
-        return slider.removeClass("active");
-      }, 300);
-
-      if (this.curCol > 15) {
-        this.curCol = 0;
-      }
-    }
-  }, {
-    key: "reset",
-    value: function reset() {
-      this.curCol = 0;
-      var $li = $("li");
-      if ($li.hasClass("on")) {
-        $li.removeClass("on");
-      }
-    }
-  }]);
-
-  return Slider;
-}();
-
-exports.default = Slider;
+// adjust tempo
+// swap sounds
+// save track
+// use web api
 
 /***/ })
 /******/ ]);

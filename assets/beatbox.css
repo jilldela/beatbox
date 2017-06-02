@@ -53,6 +53,9 @@ time, mark, audio, video {
 }
 
 .beat-row {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
 }
 
 .beat-row li {
