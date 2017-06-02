@@ -10,10 +10,8 @@ class Slider {
       slider.each((idx, beat) => {
         const audio = $(`#${jQuery.data(beat).id}`)[0];
         if (jQuery(beat).hasClass("on") && $("audio").hasClass("muted") === false) {
-          this.stopPlay();
-          audio.play().catch((e) => {
-            console.log(e);
-          });
+          this.stopPlay(audio);
+          audio.play();
         }
       });
     this.curCol++;
@@ -25,12 +23,14 @@ class Slider {
       }
   }
 
-  stopPlay() {
-    const $audio = $("audio");
-    $audio.each((idx, audio) => {
-      audio.pause();
-      audio.currentTime = 0;
-    });
+  stopPlay(sound) {
+    sound.pause();
+    sound.currentTime = 0.0;
+    // const $audio = $("audio");
+    // $audio.each((idx, audio) => {
+    //   audio.pause();
+    //   audio.currentTime = 0;
+    // });
   }
 
   reset() {

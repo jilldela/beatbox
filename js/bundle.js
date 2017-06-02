@@ -161,10 +161,8 @@ var Slider = function () {
       slider.each(function (idx, beat) {
         var audio = $("#" + jQuery.data(beat).id)[0];
         if (jQuery(beat).hasClass("on") && $("audio").hasClass("muted") === false) {
-          _this.stopPlay();
-          audio.play().catch(function (e) {
-            console.log(e);
-          });
+          _this.stopPlay(audio);
+          audio.play();
         }
       });
       this.curCol++;
@@ -179,12 +177,14 @@ var Slider = function () {
     }
   }, {
     key: "stopPlay",
-    value: function stopPlay() {
-      var $audio = $("audio");
-      $audio.each(function (idx, audio) {
-        audio.pause();
-        audio.currentTime = 0;
-      });
+    value: function stopPlay(sound) {
+      sound.pause();
+      sound.currentTime = 0.0;
+      // const $audio = $("audio");
+      // $audio.each((idx, audio) => {
+      //   audio.pause();
+      //   audio.currentTime = 0;
+      // });
     }
   }, {
     key: "reset",
@@ -322,7 +322,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var playing = true;
   var tempo = $("input").val();
 
+  console.log(tempo);
+
   $tempo.change(function (e) {
+    console.log(e.currentTarget.value);
     tempo = 1100 - e.currentTarget.value;
   });
 
