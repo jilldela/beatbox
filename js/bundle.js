@@ -355,14 +355,6 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   play();
-
-  // if (playing===true) {
-  //   let play = setInterval(() => {
-  //     activeSlider.init();
-  //   }, 300);
-  // } else if (playing===false) {
-  //   clearInterval(play);
-  // }
 });
 
 // swap sounds

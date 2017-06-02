@@ -70,14 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     play();
 
-    // if (playing===true) {
-    //   let play = setInterval(() => {
-    //     activeSlider.init();
-    //   }, 300);
-    // } else if (playing===false) {
-    //   clearInterval(play);
-    // }
-
 });
 
 // swap sounds

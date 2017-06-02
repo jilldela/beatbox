@@ -65,6 +65,7 @@ time, mark, audio, video {
   border: 1px solid black;
   border-radius: 5px;
   background-color: white;
+  transition: 0.5s;
 }
 
 .beat-row li:hover {
@@ -76,23 +77,26 @@ li.active {
   width: 46px;
   border: 2px solid red;
   border-radius: 5px;
+  transition: 0.5s;
 }
 
 .fa {
   color: white;
   font-size: 36px!important;
+  transition: 0.5s;
 }
 
 .fa:hover {
   cursor: pointer;
   color: red;
+  transition: 0.5s;
 }
 
-.nav-links {
+.controller {
   display: flex;
   justify-content: space-between;
   width: 955px;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 5px;
   padding: 15px;
 }
@@ -103,4 +107,29 @@ li.on {
 
 i.off {
   display: none;
+}
+
+.tempo {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Audiowide', cursive;
+  align-items: center;
+  margin: 25px;
+  font-size: 24px;
+  color: white;
+}
+
+.contact-links {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.github-icon, #linkedin-icon {
+  margin: 10px 15px;
+}
+
+#tempo {
+  margin: 25px;
+  width: 500px;
 }
