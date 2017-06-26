@@ -24,11 +24,10 @@ a {
 }
 
 body {
-  /*width: 100vh;
-  height: 100vh;*/
-  /*background: radial-gradient(circle at bottom right, red 5%, black 55%);*/
-  /*background: linear-gradient(135deg, black, black 80%, red);*/
-  background-color: black;
+  background-size: cover;
+  background-image: 
+    linear-gradient(to bottom, rgba(255,0,0,0.75), rgba(0,0,0,0.8)),
+    url('https://images.pexels.com/photos/90795/pexels-photo-90795.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb');
 }
 
 .page-container {
@@ -82,6 +81,7 @@ h1.page-title {
   border: 1px solid white;
   border-radius: 5px;
   background-color: white;
+  opacity: 0.5;
   transition: 0.2s;
 }
 
@@ -97,10 +97,12 @@ li.active {
   border: 1px solid red;
   border-radius: 5px;
   transition: 0.2s;
+  opacity: 1.0;
+  background-color: transparent;
 }
 
 .fa {
-  color: red;
+  color: white;
   font-size: 36px!important;
   transition: 0.5s;
 }
@@ -118,14 +120,12 @@ li.active {
   border: 2px solid white;
   border-radius: 5px;
   padding: 15px;
-  background-color: black;
-  /*background-color: black;
-  opacity: 0.5;*/
 }
 
 li.on {
   background-color: red;
   border: 1px solid red;
+  opacity: .8;
 }
 
 i.off {
@@ -151,7 +151,7 @@ i.off {
 }
 
 #github-icon, #linkedin-icon {
-  color: red;
+  color: white;
   margin: 10px 15px;
 }
 
